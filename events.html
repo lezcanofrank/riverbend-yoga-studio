@@ -40,26 +40,49 @@
                 <p>Explore supported restorative poses and guided breathing techniques intended to encourage relaxation.</p>
             </article>
         </section>
+        <section class="workshop-finder" aria-labelledby="workshop-finder-heading">
+            <h2 id="workshop-finder-heading">Find a Workshop That Fits You</h2>
+            <p>Choose a goal to see which monthly workshop is the best starting point for you.</p>
+            <div class="feature-controls">
+                <p>
+                    <label for="workshop-goal">What would you like help with?</label><br>
+                    <select id="workshop-goal" name="workshop-goal">
+                        <option value="">Select a goal</option>
+                        <option value="Learning yoga basics">Learning yoga basics</option>
+                        <option value="Moving comfortably during a busy workday">Moving comfortably during a busy workday</option>
+                        <option value="Relaxing and reducing stress">Relaxing and reducing stress</option>
+                    </select>
+                </p>
+                <p>
+                    <button type="button" id="show-workshop">Show My Workshop</button>
+                    <button type="button" id="save-workshop" hidden>Save This Workshop</button>
+                </p>
+            </div>
+            <p id="workshop-recommendation" class="recommendation-result" aria-live="polite"></p>
+            <p id="workshop-saved-status" class="saved-status" aria-live="polite"></p>
+        </section>
         <section aria-labelledby="interest-form-heading">
             <h2 id="interest-form-heading">Request a Spot or More Information</h2>
             <p>Complete the form below, and the Riverbend team will follow up about the class or event that interests you.</p>
-            <form action="#" method="post">
+            <form id="interest-form" action="#" method="post" novalidate>
                 <fieldset>
                     <legend>Your Contact Information</legend>
                     <p>
                         <label for="full-name">Full name</label><br>
-                        <input type="text" id="full-name" name="full-name" autocomplete="name" required minlength="2">
+                        <input type="text" id="full-name" name="full-name" autocomplete="name" required minlength="2" aria-describedby="full-name-error">
+                        <span id="full-name-error" class="error-message" role="alert"></span>
                     </p>
                     <p>
                         <label for="email">Email address</label><br>
-                        <input type="email" id="email" name="email" autocomplete="email" required>
+                        <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error">
+                        <span id="email-error" class="error-message" role="alert"></span>
                     </p>
                 </fieldset>
                 <fieldset>
                     <legend>Your Interests and Preferences</legend>
                     <p>
                         <label for="interest">Class or event interest</label><br>
-                        <select id="interest" name="interest" required>
+                        <select id="interest" name="interest" required aria-describedby="interest-error">
                             <option value="">Select one</option>
                             <option value="gentle-yoga">Gentle Yoga</option>
                             <option value="vinyasa-flow">Vinyasa Flow</option>
@@ -69,6 +92,7 @@
                             <option value="mobility-workshop">Desk Break Mobility</option>
                             <option value="rest-workshop">Rest and Reset</option>
                         </select>
+                        <span id="interest-error" class="error-message" role="alert"></span>
                     </p>
                     <p>
                         <label for="experience">Experience level</label><br>
@@ -92,10 +116,12 @@
                     </p>
                     <p>
                         <label for="message">Message</label><br>
-                        <textarea id="message" name="message" rows="6" cols="40" required minlength="10" maxlength="500"></textarea>
+                        <textarea id="message" name="message" rows="6" cols="40" required minlength="10" maxlength="500" aria-describedby="message-error"></textarea>
+                        <span id="message-error" class="error-message" role="alert"></span>
                     </p>
                 </fieldset>
                 <button type="submit">Send Interest Request</button>
+                <p id="form-confirmation" class="form-confirmation" aria-live="polite" hidden></p>
             </form>
         </section>
     </main>
@@ -103,5 +129,6 @@
         <p>&copy; 2026 Riverbend Yoga Studio</p>
         <p><a href="services.html">Review Riverbend's classes and services</a></p>
     </footer>
+    <script src="script.js" defer></script>
 </body>
 </html>
